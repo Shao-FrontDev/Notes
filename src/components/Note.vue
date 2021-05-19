@@ -108,8 +108,7 @@
 </template>
 
 <script>
-//props 传递一个颜色信息过来子组件，子组件根据这个信息来决定背景色
-//
+import { mapMutations } from "vuex";
 
 import Colors from "./Colors.vue";
 export default {
@@ -130,18 +129,16 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["editNote", "deleteNote"]),
     save(id) {
       this.dialogVisible = false;
-      this.$store.commit("editNote", {
+      this.editNote({
         id: id,
         content: this.content,
         color: this.color,
       });
-      
     },
-    deleteNote(id) {
-      this.$store.commit("deleteNote", id);
-    },
+
     getColor(color) {
       this.color = color;
     },

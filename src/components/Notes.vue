@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Note from "./Note.vue";
 export default {
   components: {
@@ -17,9 +18,7 @@ export default {
   },
 
   computed: {
-    notes() {
-      return this.$store.getters.notes;
-    },
+    ...mapGetters(["notes"]),
   },
 };
 </script>

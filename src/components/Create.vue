@@ -40,6 +40,7 @@
   </el-col>
 </template>
 <script>
+import { mapMutations } from "vuex";
 import { v4 as uuidv4 } from "uuid";
 import Colors from "./Colors.vue";
 export default {
@@ -57,6 +58,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["addNote"]),
     getColor(color) {
       this.color = color;
     },
@@ -68,7 +70,7 @@ export default {
         id: uuidv4(),
       };
       if (this.title !== "" && this.content !== "") {
-        this.$store.commit("addNote", note);
+        this.addNote(note);
       } else {
         this.$message({
           showClose: true,
@@ -79,7 +81,6 @@ export default {
       }
       this.title = "";
       this.content = "";
-
       this.opened = false;
     },
   },

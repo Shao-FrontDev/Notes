@@ -38,7 +38,6 @@ export default {
   methods: {
     changeColor(color) {
       this.selectedColor = color;
-      console.log("color change");
       this.$emit("getColor", color);
     },
   },

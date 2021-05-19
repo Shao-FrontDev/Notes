@@ -3,6 +3,7 @@
     <el-col :span="24">
       <h5>小计划</h5>
       <el-menu
+        active-text-color='#536fdf'
         router
         class="el-menu-vertical-demo"
         @open="handleOpen"
