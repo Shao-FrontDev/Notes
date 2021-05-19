@@ -1,6 +1,6 @@
 <template>
   <div class="colors" @click="changeColor">
-    <div class="default" data-color="default"></div>
+    <div class="default" data-color="white">✔️</div>
     <div class="default red" data-color="red"></div>
     <div class="default orange" data-color="orange"></div>
     <div class="default blue" data-color="blue"></div>
@@ -22,6 +22,7 @@ export default {
   name: "Colors",
   methods: {
     changeColor(e) {
+      console.log(e.target);
       let curColor = e.target.dataset.color;
       this.$emit("getColor", curColor);
     },
@@ -58,6 +59,11 @@ export default {
   height: 20px;
   background: white;
 }
+.white {
+  border: none;
+  background: white;
+}
+
 .red {
   border: none;
   background: #f44336;

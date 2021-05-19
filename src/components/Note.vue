@@ -211,6 +211,7 @@ export default {
   background: #ffff8d;
 }
 .icon {
+  cursor: pointer;
   margin-right: 10px;
 }
 </style>
