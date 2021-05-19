@@ -195,7 +195,7 @@ export default {
   background: #4caf50;
 }
 
-.blue-1 {
+.skyblue {
   border: none;
   background: #a8e0ff;
 }

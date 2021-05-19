@@ -28,8 +28,8 @@
         <div class="box-footer">
           <el-popover
             placement="top-start"
-            width="50"
             trigger="hover"
+            width="50"
             ><Colors v-on:getColor="getColor" />
             <el-button slot="reference">Color</el-button>
           </el-popover>

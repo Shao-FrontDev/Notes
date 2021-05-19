@@ -2,7 +2,7 @@
   <el-row :gutter="20">
     <div v-for="note in notes" :key="note.id">
       <el-col :xs="24" :sm="12" :md="8" :lg="6"
-        ><div class="grid-content bg-purple">
+        ><div class="grid-content">
           <Note :note="note" /></div
       ></el-col>
     </div>
@@ -45,7 +45,7 @@ export default {
   min-height: 36px;
 }
 .row-bg {
-  padding: 10px 0;
+  padding: 0 0;
   background-color: #f9fafc;
 }
 </style>

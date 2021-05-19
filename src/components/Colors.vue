@@ -1,15 +1,15 @@
 <template>
-  <div class="colors" @click="changeColor">
-    <div class="default" data-color="white">
-      {{ state ? "✔️" : "" }}
+  <div class="colorWrapper">
+    <div
+      v-for="(item, index) in colors"
+      :key="index"
+      class="colors"
+      :class="item"
+      @click="changeColor(item)"
+      :data-color="item"
+    >
+      {{ item === (selectedColor || "white") ? hook : "" }}
     </div>
-    <div class="default red" data-color="red"></div>
-    <div class="default orange" data-color="orange"></div>
-    <div class="default blue" data-color="blue"></div>
-    <div class="default green" data-color="green"></div>
-    <div class="default blue-1" data-color="blue-1"></div>
-    <div class="default purple" data-color="purple"></div>
-    <div class="default yellow" data-color="yellow"></div>
   </div>
 </template>
 
@@ -20,15 +20,26 @@ export default {
   },
   data() {
     return {
-      state: false,
+      colors: [
+        "white",
+        "red",
+        "orange",
+        "blue",
+        "green",
+        "skyblue",
+        "purple",
+        "yellow",
+      ],
+      hook: "✔️",
+      selectedColor: null,
     };
   },
   name: "Colors",
   methods: {
-    changeColor(e) {
-      console.log(e.target);
-      let curColor = e.target.dataset.color;
-      this.$emit("getColor", curColor);
+    changeColor(color) {
+      this.selectedColor = color;
+
+      this.$emit("getColor", color);
     },
     // changeColor(e) {
     //   let current = e.target;
@@ -46,56 +57,73 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.colors {
+.colorWrapper {
   display: flex;
   flex-wrap: wrap;
 }
 
-.colors > div {
+.colors {
+  margin: 5px;
   cursor: pointer;
 }
 
-.default {
-  border: 1px solid rgba(128, 128, 128, 0.303);
-  margin: 5px 8px;
+.white {
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  background: white;
-}
-.white {
-  border: none;
+  border: 1px solid gray;
   background: white;
 }
 
 .red {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #f44336;
 }
 .orange {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #ff9800;
 }
 .blue {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #2196f3;
 }
 .green {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #4caf50;
 }
 
-.blue-1 {
+.skyblue {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #a8e0ff;
 }
 
 .purple {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #e1bee7;
 }
 
 .yellow {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   border: none;
   background: #ffff8d;
 }
