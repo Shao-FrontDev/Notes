@@ -41,18 +41,6 @@ export default {
       console.log("color change");
       this.$emit("getColor", color);
     },
-    // changeColor(e) {
-    //   let current = e.target;
-    //   let currentColor = current.dataset.color;
-    //   this.$store.commit("editColor", {
-    //     id: this.id,
-    //     color: currentColor,
-    //   });
-    // },
-  },
-
-  created() {
-    // console.log(this.id);
   },
 };
 </script>

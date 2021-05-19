@@ -132,12 +132,12 @@ export default {
   methods: {
     save(id) {
       this.dialogVisible = false;
-
       this.$store.commit("editNote", {
         id: id,
         content: this.content,
         color: this.color,
       });
+      
     },
     deleteNote(id) {
       this.$store.commit("deleteNote", id);

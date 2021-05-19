@@ -1,11 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import mutations from "./mutations";
 Vue.use(Vuex);
-
-const StoreNotes = (note) => {
-  localStorage.setItem("notes", JSON.stringify(note));
-};
 
 export const store = new Vuex.Store({
   state: {
@@ -21,31 +17,5 @@ export const store = new Vuex.Store({
       );
     },
   },
-  mutations: {
-    addNote(state, note) {
-      state.notes = [...state.notes, note];
-      StoreNotes(state.notes);
-    },
-    deleteNote(state, id) {
-      state.notes = state.notes.filter(
-        (note) => note.id !== id
-      );
-      StoreNotes(state.notes);
-    },
-    editNote(state, payload) {
-      state.notes = state.notes.map((note) => {
-        if (note.id === payload.id) {
-          return {
-            title: note.title,
-            content: payload.content,
-            id: note.id,
-            color: payload.color,
-          };
-        } else {
-          return note;
-        }
-      });
-      StoreNotes(state.notes);
-    },
-  },
+  mutations,
 });
