@@ -54,9 +54,6 @@ export default {
     };
   },
   methods: {
-    open() {
-      this.opened = true;
-    },
     getColor(color) {
       console.log(color);
       this.color = color;
@@ -70,6 +67,11 @@ export default {
       if (this.title !== "" && this.content !== "") {
         this.$store.commit("addNote", note);
       } else {
+        this.$message({
+          showClose: true,
+          message: "请输入标题和内容",
+          type: "error",
+        });
         return;
       }
       this.title = "";
@@ -80,13 +82,13 @@ export default {
   },
   mounted() {
     //   // ture  ---> false
-    // document.addEventListener("click", () => {
-    //     console.log("click");
-    //   if (this.open === false) {
-    //     this.open = true;
-    //   }
-    //   //   console.log(this.open);
-    // });
+    document.addEventListener("click", (e) => {
+      if (!this.$el.contains(e.target)) {
+        this.opened = false;
+      } else {
+        this.opened = true;
+      }
+    });
   },
 };
 </script>
