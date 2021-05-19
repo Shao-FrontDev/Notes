@@ -45,7 +45,7 @@
             placement="top-start"
             width="50"
             trigger="hover"
-            ><Colors :id="note.id" />
+            ><Colors :id="note.id" @getColor="getColor" />
 
             <svg
               t="1621385428454"
@@ -136,10 +136,14 @@ export default {
       this.$store.commit("editNote", {
         id: id,
         content: this.content,
+        color: this.color,
       });
     },
     deleteNote(id) {
       this.$store.commit("deleteNote", id);
+    },
+    getColor(color) {
+      this.color = color;
     },
   },
   computed: {},

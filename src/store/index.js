@@ -47,20 +47,5 @@ export const store = new Vuex.Store({
       });
       StoreNotes(state.notes);
     },
-    editColor(state, payload) {
-      state.notes = state.notes.map((note) => {
-        if (note.id === payload.id) {
-          return {
-            title: note.title,
-            content: note.content,
-            id: note.id,
-            color: payload.color,
-          };
-        } else {
-          return note;
-        }
-      });
-      StoreNotes(state.notes);
-    },
   },
 });

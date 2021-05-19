@@ -30,7 +30,7 @@
             placement="top-start"
             trigger="hover"
             width="50"
-            ><Colors v-on:getColor="getColor" />
+            ><Colors @getColor="getColor" />
             <el-button slot="reference">Color</el-button>
           </el-popover>
           <el-button @click="save">Save</el-button>
@@ -84,7 +84,6 @@ export default {
     },
   },
   mounted() {
-    //   // ture  ---> false
     document.addEventListener("click", (e) => {
       if (!this.$el.contains(e.target)) {
         this.opened = false;
