@@ -22,17 +22,21 @@ export default {
   name: "Colors",
   methods: {
     changeColor(e) {
-      let current = e.target;
-      let currentColor = current.dataset.color;
-      this.$store.commit("editColor", {
-        id: this.id,
-        color: currentColor,
-      });
+      let curColor = e.target.dataset.color;
+      this.$emit("getColor", curColor);
     },
+    // changeColor(e) {
+    //   let current = e.target;
+    //   let currentColor = current.dataset.color;
+    //   this.$store.commit("editColor", {
+    //     id: this.id,
+    //     color: currentColor,
+    //   });
+    // },
   },
 
   created() {
-    console.log(this.id);
+    // console.log(this.id);
   },
 };
 </script>

@@ -29,7 +29,7 @@
             placement="top-start"
             width="50"
             trigger="hover"
-            ><Colors />
+            ><Colors v-on:getColor="getColor" />
             <el-button slot="reference">Color</el-button>
           </el-popover>
           <el-button @click="save">Save</el-button>
@@ -57,10 +57,15 @@ export default {
     open() {
       this.opened = true;
     },
+    getColor(color) {
+      console.log(color);
+      this.color = color;
+    },
     save() {
       let note = {
         title: this.title,
         content: this.content,
+        color: this.color,
       };
       if (this.title !== "" && this.content !== "") {
         this.$store.commit("addNote", note);

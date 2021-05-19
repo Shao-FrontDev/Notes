@@ -18,9 +18,11 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
+
 #app {
-  max-width: 1080px;
-  margin: 0 auto;
+  min-width: 680px;
+  max-width: 1500px;
 }
 </style>
