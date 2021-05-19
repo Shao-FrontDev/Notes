@@ -3,34 +3,13 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+const StoreNotes = (note) => {
+  localStorage.setItem("notes", JSON.stringify(note));
+};
+
 export const store = new Vuex.Store({
   state: {
-    notes: [
-      {
-        title: "Learning",
-        content: "Learing the Vue",
-        color: "orange",
-        id: 1,
-      },
-      {
-        title: "React",
-        content: "Learing the Vue",
-        color: "blue",
-        id: 2,
-      },
-      {
-        title: "Hooks",
-        content: "Learing the Vue",
-        color: "green",
-        id: 3,
-      },
-      {
-        title: "Learning",
-        content: "Learing the Vue",
-        color: "yellow",
-        id: 4,
-      },
-    ],
+    notes: JSON.parse(localStorage.getItem("notes")) || [],
   },
   getters: {
     notes(state) {
@@ -45,12 +24,13 @@ export const store = new Vuex.Store({
   mutations: {
     addNote(state, note) {
       state.notes = [...state.notes, note];
+      StoreNotes(state.notes);
     },
     deleteNote(state, id) {
-      let res = state.notes.filter(
+      state.notes = state.notes.filter(
         (note) => note.id !== id
       );
-      state.notes = res;
+      StoreNotes(state.notes);
     },
     editNote(state, payload) {
       state.notes = state.notes.map((note) => {
@@ -65,9 +45,9 @@ export const store = new Vuex.Store({
           return note;
         }
       });
+      StoreNotes(state.notes);
     },
     editColor(state, payload) {
-      console.log("editColor", payload);
       state.notes = state.notes.map((note) => {
         if (note.id === payload.id) {
           return {
@@ -80,7 +60,7 @@ export const store = new Vuex.Store({
           return note;
         }
       });
-      console.log(state.notes);
+      StoreNotes(state.notes);
     },
   },
 });

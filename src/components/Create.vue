@@ -1,11 +1,12 @@
 <template>
   <el-col :span="8" class="wrapper">
-    <div v-if="!opened" @click="open">
+    <div v-if="!opened">
       <el-card :body-style="{ padding: '40px' }"
         ><h4>Take a note...</h4>
         <span>0/100</span></el-card
       >
     </div>
+
     <div v-else>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
@@ -39,6 +40,7 @@
   </el-col>
 </template>
 <script>
+import { v4 as uuidv4 } from "uuid";
 import Colors from "./Colors.vue";
 export default {
   components: {
@@ -51,11 +53,11 @@ export default {
       title: "",
       content: "",
       color: "",
+      id: "",
     };
   },
   methods: {
     getColor(color) {
-      console.log(color);
       this.color = color;
     },
     save() {
@@ -63,6 +65,7 @@ export default {
         title: this.title,
         content: this.content,
         color: this.color,
+        id: uuidv4(),
       };
       if (this.title !== "" && this.content !== "") {
         this.$store.commit("addNote", note);

@@ -1,6 +1,8 @@
 <template>
   <div class="colors" @click="changeColor">
-    <div class="default" data-color="white">✔️</div>
+    <div class="default" data-color="white">
+      {{ state ? "✔️" : "" }}
+    </div>
     <div class="default red" data-color="red"></div>
     <div class="default orange" data-color="orange"></div>
     <div class="default blue" data-color="blue"></div>
@@ -14,10 +16,12 @@
 <script>
 export default {
   props: {
-    id: { type: Number },
+    id: { type: String },
   },
   data() {
-    return {};
+    return {
+      state: false,
+    };
   },
   name: "Colors",
   methods: {

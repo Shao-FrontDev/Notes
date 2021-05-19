@@ -1,6 +1,9 @@
 <template>
   <el-container>
-    <el-aside width="200px"><Subheading /></el-aside>
+    
+    <el-aside width="200px" 
+      ><Subheading
+    /></el-aside>
     <el-container>
       <el-header><h1>Notes</h1></el-header>
       <el-main>
