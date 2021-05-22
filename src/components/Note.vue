@@ -143,8 +143,7 @@ export default {
       this.color = color;
     },
   },
-  computed: {},
-  created() {},
+
 };
 </script>
 

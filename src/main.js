@@ -7,8 +7,20 @@ Vue.config.productionTip = false;
 
 import "./plugins/elementui";
 
-new Vue({
+let _Vue = Vue;
+
+new _Vue({
+  data() {
+    return {
+      msg: "Hello world",
+    };
+  },
+});
+
+const app = new Vue({
   store: store,
   router: router,
   render: (h) => h(App),
-}).$mount("#app");
+});
+
+app.$mount("#app");
